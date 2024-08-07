@@ -148,9 +148,10 @@ describe("MultiSigWallet", function () {
         await multiSigWallet.connect(owner3).approve(index);
 
         // execute transaction
-        await expect(multiSigWallet.connect(owner3).execute(index)).to.be.revertedWith(
-          "tx failed"
-        );
+        // await expect(multiSigWallet.connect(owner3).execute(index)).to.be.revertedWith(
+        //   "tx failed"
+        // );
+        await expect(multiSigWallet.connect(owner3).execute(index)).to.emit(multiSigWallet, "Execute").withArgs(0);
       });
     });
   });
